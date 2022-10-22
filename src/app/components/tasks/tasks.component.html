@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header">Task List</div>
+  <div class="card-body">
+    <div>
+      <ul class="list-group">
+        <li *ngFor="let task of tasks" class="list-group-item">
+          <div class="row">
+            <div class="col-md-3">{{task.name}}</div>
+            <div class="col-md-6">{{task.type}}</div>
+            <div class="col-md-3"><button class="btn btn-danger">Done</button></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
