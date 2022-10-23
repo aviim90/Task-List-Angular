@@ -5,15 +5,15 @@
       <label class="form-label">Task Name</label>
       <input type="text" class="form-control" [(ngModel)]="name">
     </div>
-<!--    <div class="mb-3">-->
-<!--      <label class="form-label">Priority</label>-->
-<!--      <select type="text" class="form-control" [(ngModel)]="type">-->
-<!--        <option disabled value="">select</option>-->
-<!--        <option *ngFor="let t of type; let i=index" [value]="i">{{t}}</option>-->
-<!--      </select>-->
-<!--    </div>-->
     <div class="mb-3">
-      <button class="btn btn-success" (click)="addTask()">Add</button>
+      <label class="form-label">Priority</label>
+      <select type="text" class="form-control" [(ngModel)]="type">
+        <option disabled value="">select</option>
+        <option *ngFor="let t of types" [value]="t">{{t}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-success" (click)="addTask()" [disabled]="name==null || type==null">Add</button>
     </div>
   </div>
 </div>

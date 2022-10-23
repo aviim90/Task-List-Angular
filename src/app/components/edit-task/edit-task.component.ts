@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {TasksService} from "../../services/tasks.service";
 
 @Component({
   selector: 'app-edit-task',
@@ -6,10 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-task.component.css']
 })
 export class EditTaskComponent implements OnInit {
+  public name:string|null=null;
+  public type:string|null="";
+  public types:string[]=["Urgent", "Routine", "Soon"];
+  public index:number|null=null;
+  constructor(
+    private taskService:TasksService,
+    private router:Router,
+    private route:ActivatedRoute
+  ) {
+    this.index=route.snapshot.params['id'];
+    if(this.index!=null){
+      const task=this.taskService.tasks[this.index];
+      this.name=task.name;
+      this.type=task.type;
+    }
 
-  constructor() { }
+  }
 
   ngOnInit(): void {
+  }
+
+  public update(){
+    if(this.index!=null && this.name!=null && this.type!=null)
+    this.taskService.updateTasks(this.index, this.name, this.type);
+    this.router.navigate(["/"]);
   }
 
 }

@@ -17,4 +17,9 @@ export class TasksComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public onReceivedDelete(i:number){
+    this.taskService.delete(i);
+
+  }
+
 }

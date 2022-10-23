@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TasksService} from "../../services/tasks.service";
-import {Task} from "../../models/Task";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-task',
@@ -9,16 +9,21 @@ import {Task} from "../../models/Task";
 })
 export class AddTaskComponent implements OnInit {
   public name:string|null=null;
-  public type:string|null=null;
+  public type:string|null="";
+  public types:string[]=["Urgent", "Routine", "Soon"];
+  constructor(private tasksService:TasksService, private router:Router) {
 
-  constructor(private tasksService:TasksService) { }
+  }
 
   ngOnInit(): void {
   }
 
   public addTask(){
     if(this.name!=null && this.type!=null){
-      this.tasksService.tasks.push(new Task(this.name, this.type));
+     this.tasksService.addTask(this.name, this.type);
+     this.name=null;
+     this.type=null;
+     this.router.navigate(['/']);
     }
   }
 

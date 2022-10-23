@@ -8,7 +8,14 @@ import { TaskDetailsComponent } from './components/task-details/task-details.com
 import { EditTaskComponent } from './components/edit-task/edit-task.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import {FormsModule} from "@angular/forms";
+import { TaskItemComponent } from './components/tasks/task-item/task-item.component';
+import {RouterModule, Routes} from "@angular/router";
 
+const appRoutes:Routes=[
+  {path:"",component:TasksComponent},
+  {path:"new", component:AddTaskComponent},
+  {path:"edit/:id", component:EditTaskComponent}
+  ]
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,11 +23,13 @@ import {FormsModule} from "@angular/forms";
     AddTaskComponent,
     TaskDetailsComponent,
     EditTaskComponent,
-    NavigationComponent
+    NavigationComponent,
+    TaskItemComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
