@@ -7,4 +7,4 @@ Simple app, todo created using Angular. Functions include add, edit and delete t
 ## Add New Task
 ![](taskImages/addtask.png)
 ## Edit Task
-![](taskImages/edittasks.png)
+![](taskImages/editTask.png)
